@@ -70,7 +70,7 @@ def get_pie_chart(entered_site):
               [Input(component_id = 'site-dropdown', component_property = 'value'), 
                Input(component_id = 'payload-slider', component_property = 'value')])
 
-def get_success_chart(entered_site):
+def get_success_chart(entered_site, slider1):
   if entered_site == 'ALL':
     df = spacex_df
     fig = px.scatter(df, x = 'Payload Mass (kg)', y = 'class', color = "Booster Version Category", 
