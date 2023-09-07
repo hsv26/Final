@@ -71,16 +71,17 @@ def get_pie_chart(entered_site):
                Input(component_id = 'payload-slider', component_property = 'value')])
 
 def get_success_chart(entered_site, slider1):
-  if entered_site == 'ALL':
-    df = spacex_df
-    fig = px.scatter(df, x = 'Payload Mass (kg)', y = 'class', color = "Booster Version Category", 
-    title = "Total Success Launches by Site")
-    return fig
-  else:
-    df = spacex_df[spacex_df['Launch Site'] == entered_site]
-    fig = px.scatter(df, x = 'Payload Mass (kg)', y = 'class', color = "Booster Version Category",
-    title = f"Success launches for {entered_site}")
-    return fig
+    print(slider1)
+    if entered_site == 'ALL':
+        df = spacex_df
+        fig = px.scatter(df, x = 'Payload Mass (kg)', y = 'class', color = "Booster Version Category", 
+        title = "Total Success Launches by Site")
+        return fig
+    else:
+        df = spacex_df[spacex_df['Launch Site'] == entered_site]
+        fig = px.scatter(df, x = 'Payload Mass (kg)', y = 'class', color = "Booster Version Category",
+        title = f"Success launches for {entered_site}")
+        return fig
 
 
 # Run the app
