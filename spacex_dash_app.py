@@ -54,12 +54,14 @@ app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
 
 def get_pie_chart(entered_site):
   if entered_site == 'ALL':
-    fig = px.pie(spacex_df, values = 'class', names = 'Launch Site')
+    fig = px.pie(spacex_df, values = 'class', names = 'Launch Site',
+    title = "Total Success Launches by Site")
     return fig
   else:
     df_new = spacex_df[spacex_df["Launch Site"] == entered_site]
     df_new = df_new.groupby(['class', 'Launch Site']).size().reset_index(name = 'class count')
-    fig = px.pie(df_new, values = 'class count', names = 'class')
+    fig = px.pie(df_new, values = 'class count', names = 'class',
+    title = f"Success launches for {entered_site}")
     return fig
 
 # TASK 4:
@@ -71,10 +73,14 @@ def get_pie_chart(entered_site):
 def get_success_chart(entered_site):
   if entered_site == 'ALL':
     df = spacex_df
-    figure = px.scatter(data = df, x = 'class', y = 'Payload Mass (kg)', color = "Booster Version Category")
+    fig = px.scatter(df, x = 'Payload Mass (kg)', y = 'class', color = "Booster Version Category", 
+    title = "Total Success Launches by Site")
+    return fig
   else:
     df = spacex_df[spacex_df['Launch Site'] == entered_site]
-    figure = px.scatter(data = df, x = 'class', y = 'Payload Mass (kg)', color = "Booster Version Category")
+    fig = px.scatter(df, x = 'Payload Mass (kg)', y = 'class', color = "Booster Version Category",
+    title = f"Success launches for {entered_site}")
+    return fig
 
 
 # Run the app
