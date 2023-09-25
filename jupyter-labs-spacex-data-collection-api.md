@@ -1164,7 +1164,7 @@ Calculate below the mean for the <code>PayloadMass</code> using the <code>.mean(
 # Calculate the mean value of PayloadMass column
 m = data_falcon9['PayloadMass'].mean()
 # Replace the np.nan values with its mean value
-data_falcon9['PayloadMass'].replace(np.nan, data_falcon9['PayloadMass'].mean())
+data_falcon9['PayloadMass'].replace(np.nan, m)
 data_falcon9.isnull().sum()
 ```
 
